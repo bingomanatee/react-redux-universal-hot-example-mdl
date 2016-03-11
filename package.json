@@ -61,7 +61,7 @@
       "env": {
         "NODE_PATH": "./src",
         "NODE_ENV": "development",
-        "PORT": 3000,
+        "PORT": 3100,
         "APIPORT": 3030
       }
     },
@@ -78,7 +78,7 @@
       "env": {
         "UV_THREADPOOL_SIZE": 100,
         "NODE_PATH": "./src",
-        "PORT": 3000,
+        "PORT": 3100,
         "APIPORT": 3030
       }
     },
@@ -122,6 +122,7 @@
     "react-dom": "^0.14.1",
     "react-helmet": "^2.2.0",
     "react-inline-css": "^2.0.0",
+    "react-mdl": "^1.4.4",
     "react-redux": "^4.0.0",
     "react-router": "2.0.0",
     "react-router-bootstrap": "^0.20.1",

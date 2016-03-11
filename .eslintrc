@@ -15,7 +15,10 @@
     "comma-dangle": 0,  // not sure why airbnb turned this on. gross!
     "indent": 0,
     "no-console": 0,
-    "no-alert": 0
+    "no-alert": 0,
+    "no-multi-spaces": 0,
+    "space-before-function-paren": 0,
+    "react/self-closing-comp": 0
   },
   "plugins": [
     "react", "import"

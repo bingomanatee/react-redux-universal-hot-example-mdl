@@ -60,7 +60,7 @@ export default class App extends Component {
 		return (
 				<div className={styles.app}>
 					<Helmet {...config.app.head}/>
-					<Navigation navstyles={styles} user={user} />
+					<Navigation pushState={this.props.pushState} navstyles={styles} user={user} />
 
 					<div className={styles.appContent}>
 						{this.props.children}

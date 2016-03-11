@@ -1,80 +1,85 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import config from '../../config';
-import { IndexLink, Link } from 'react-router';
+import { IndexLink } from 'react-router';
+
 import { Header, HeaderRow, Spacer, Navigation, Button, Drawer} from 'react-mdl';
 
 @connect((state) => state, {})
 export default class TopNavigation extends Component {
-  static propTypes = {
-    user: PropTypes.object,
-    navstyles: PropTypes.object
-  };
+    static propTypes = {
+        user: PropTypes.object,
+        navstyles: PropTypes.object,
+        pushState: PropTypes.func.isRequired
+    };
 
-  render () {
-    const navstyles = this.props.navstyles;
-    const localstyles = require('./Navigation.scss');
-    const styles = Object.assign({}, navstyles, localstyles);
-    const user = this.props.user;
-
-    const title = (
-      <IndexLink to="/" className={styles['brand-link']} activeStyle={{color: '#33e0ff'}}>
-        <div className={styles['brand-link__brand']}/>
-        <span className={styles['brand-link__brand-text']}>{config.app.title}</span>
-      </IndexLink>
-    );
-
-    const children = [
-      <div key="widgets-button"><Button to="/widgets">
-        Widgets
-      </Button></div>,
-      <div key="survey-button"><Button to="/survey">
-        Survey
-      </Button></div>,
-      <div key="about-button"><Button>
-        <Link to="/about">
-        About Us</Link>
-      </Button></div>];
-
-    if (user) {
-      children.unshift(<div key="chat-button"><Button to="/chat">
-        Chat
-      </Button></div>);
-      children.push(
-        <div key="logout-button"><Button to="/logout">
-          <div className="logout-link" onClick={this.handleLogout}>
-            Logout
-          </div>
-        </Button></div>);
-      children.push(
-        <div key="userid" className={styles.loggedInMessage + ' navbar-text'}>Logged in as
-          <strong>{user.name}</strong>.</div>);
-      children.push(
-        <div key="github-button"><Button target="_blank" title="View on Github"
-                                         href="https://github.com/erikras/react-redux-universal-hot-example">
-          <i className="fa fa-github"/>
-        </Button></div>);
-    } else {
-      children.push(
-        <div key="login-button"><Button to="/login">
-          Login
-        </Button></div>);
+    toWidgets() {
+        this.props.pushState('/widgets');
     }
 
-    return (
-      <Header>
-        <HeaderRow title={title}>
-          <Spacer />
-          <Navigation>
-            {children}
-          </Navigation>
-        </HeaderRow>
-        <Drawer>
-          {children}
-        </Drawer>
-      </Header>
-    );
-  }
+    render() {
+        const navstyles = this.props.navstyles;
+        const localstyles = require('./Navigation.scss');
+        const styles = Object.assign({}, navstyles, localstyles);
+        const user = this.props.user;
+
+        const title = (
+          <IndexLink to="/" className={styles['brand-link']} activeStyle={{color: '#33e0ff'}}>
+              <div className={styles['brand-link__brand']}/>
+              <span className={styles['brand-link__brand-text']}>{config.app.title}</span>
+          </IndexLink>
+        );
+
+        const children = [
+            <div key="widgets-button"><Button onClick={this.toWidgets.bind(this)}>
+                Widgets
+            </Button></div>,
+            <div key="survey-button"><Button to="/survey">
+                Survey
+            </Button></div>,
+            <div key="about-button" href="/about"><Button>
+                About Us
+            </Button></div>];
+
+        if (user) {
+            children.unshift(<div key="chat-button"><Button to="/chat">
+                Chat
+            </Button></div>);
+            children.push(
+              <div key="logout-button"><Button to="/logout">
+                  <div className="logout-link" onClick={this.handleLogout}>
+                      Logout
+                  </div>
+              </Button></div>);
+            children.push(
+              <div key="userid" className={styles.loggedInMessage + ' navbar-text'}>Logged in as
+                  <strong>{user.name}</strong>.</div>);
+            children.push(
+              <div key="github-button"><Button target="_blank" title="View on Github"
+                                               href="https://github.com/erikras/react-redux-universal-hot-example">
+                  <i className="fa fa-github"/>
+              </Button></div>);
+        } else {
+            children.push(
+              <div key="login-button"><Button to="/login">
+                  Login
+              </Button></div>);
+        }
+
+        return (
+          <Header>
+              <HeaderRow title={title}>
+                  <Spacer />
+                  <Navigation>
+                      {children}
+                  </Navigation>
+              </HeaderRow>
+              <Drawer>
+                  {children}
+              </Drawer>
+          </Header>
+        );
+    }
 }
 
 /**

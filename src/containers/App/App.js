@@ -7,7 +7,9 @@ import { InfoBar } from 'components';
 import { routeActions } from 'react-router-redux';
 import config from '../../config';
 import { asyncConnect } from 'redux-async-connect';
-import Navigation from '../../components/Navigtation/Navigation';
+import Navigation from '../../components/Navigation/Navigation';
+import NavDrawer from '../../components/NavDrawer/NavDrawer';
+import {Layout} from 'react-mdl';
 
 @asyncConnect([{
 	promise: ({store: {dispatch, getState}}) => {
@@ -56,11 +58,12 @@ export default class App extends Component {
 	render () {
 		const styles = require('./App.scss');
 		const {user} = this.props;
-
+// <Layout  className={styles.app}
 		return (
-				<div className={styles.app}>
-					<Helmet {...config.app.head}/>
-					<Navigation pushState={this.props.pushState} navstyles={styles} user={user} />
+				<Layout fixedHeader>
+					<Navigation pushState={this.props.pushState} user={user} />
+                    <NavDrawer pushState={this.props.pushState} user={user} />
+                    <Helmet {...config.app.head}/>
 
 					<div className={styles.appContent}>
 						{this.props.children}
@@ -74,7 +77,7 @@ export default class App extends Component {
 							href="https://discord.gg/0ZcbPKXt5bZZb1Ko" target="_blank">#react-redux-universal</a>
 						Discord channel.
 					</div>
-				</div>
+				</Layout>
 		);
 	}
 }

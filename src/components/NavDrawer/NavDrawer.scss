@@ -1,0 +1,10 @@
+.drawer {
+  a, a.link, a.visited {
+    color: black;
+  }
+}
+
+.drawer > span > div {
+  margin-top: 1.5rem;
+  flex-direction: column;
+}

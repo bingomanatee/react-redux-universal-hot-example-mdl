@@ -62,8 +62,8 @@ export default class App extends Component {
       <div className={styles.app}>
         <Helmet {...config.app.head}/>
         <Layout fixedHeader>
-          <Navigation pushState={this.props.pushState} navstyles={styles} user={user}/>
-
+          <Navigation drawer={0} pushState={this.props.pushState} navstyles={styles} user={user}/>
+          <Navigation drawer={1} pushState={this.props.pushState} navstyles={styles} user={user}/>
           <div className={styles.appContent}>
             {this.props.children}
           </div>

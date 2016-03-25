@@ -1,5 +1,6 @@
-.app {
+@import '../../theme/variables';
 
+.app {
 	nav :global(.fa) {
 		font-size: 2em;
 		line-height: 20px;
@@ -8,6 +9,7 @@
 	.brand-link {
 		display: flex;
 		align-items: center;
+		text-decoration : none;
 	}
 
 	.brand-link__brand {
@@ -26,6 +28,7 @@
 
 	.brand-link__brand-text {
 		padding-top: 0.5rem;
+		color: $brand-link;
 	}
 }
 

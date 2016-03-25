@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import config from '../../config';
 import { IndexLink } from 'react-router';
 import { Header, Navigation, Button, Drawer} from 'react-mdl';
+import closeDrawer from '../../helpers/closeDrawer';
 
 @connect((state) => state, {})
 export default class TopNavigation extends Component {
@@ -10,12 +11,33 @@ export default class TopNavigation extends Component {
     user: PropTypes.object,
     navstyles: PropTypes.object,
     pushState: PropTypes.func.isRequired,
+    logout: PropTypes.func.isRequired,
     drawer: PropTypes.number
   };
 
+  componentDidMount () {
+    console.log('this.refs: ', this.refs);
+  }
+
   toWidgets () {
     this.props.pushState('/widgets');
+    if (this.props.drawer) closeDrawer.close();
   }
+
+  toSurvey () {
+    this.props.pushState('/survey');
+    if (this.props.drawer) closeDrawer.close();
+  }
+
+  toAbout () {
+    this.props.pushState('/about');
+    if (this.props.drawer) closeDrawer.close();
+  }
+
+  handleLogout = (event) => {
+    event.preventDefault();
+    this.props.logout();
+  };
 
   render () {
     const navstyles = this.props.navstyles;
@@ -30,15 +52,21 @@ export default class TopNavigation extends Component {
       </IndexLink>
     );
     const children = [
-      <div key="widgets-button" className={buttonClass}><Button onClick={this.toWidgets.bind(this)}>
+      <div key="widgets-button" className={buttonClass}>
+        <Button onClick={this.toWidgets.bind(this)}>
         Widgets
-      </Button></div>,
-      <div key="survey-button" className={buttonClass}><Button to="/survey">
-        Survey
-      </Button></div>,
-      <div key="about-button" href="/about" className={buttonClass}><Button>
-        About Us
-      </Button></div>];
+      </Button>
+      </div>,
+      <div key="survey-button" className={buttonClass}>
+        <Button onClick={this.toSurvey.bind(this)}>
+          Survey
+        </Button>
+      </div>,
+      <div key="about-button" href="/about" className={buttonClass}>
+        <Button onClick={this.toAbout.bind(this)}>
+          About Us
+        </Button>
+      </div>];
 
     if (user) {
       children.unshift(<div key="chat-button" className={buttonClass}><Button to="/chat">
@@ -47,7 +75,7 @@ export default class TopNavigation extends Component {
 
       children.push(
         <div key="logout-button"><Button to="/logout">
-          <div className="logout-link" onClick={this.handleLogout}>
+          <div className="logout-link" onClick={this.handleLogout.bind(this)}>
             Logout
           </div>
         </Button></div>);

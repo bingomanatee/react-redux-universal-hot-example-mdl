@@ -9,6 +9,7 @@ import config from '../../config';
 import { asyncConnect } from 'redux-async-connect';
 import Navigation from '../../components/Navigtation/Navigation';
 import {Layout} from 'react-mdl';
+import closeDrawer from '../../helpers/closeDrawer';
 
 @asyncConnect([{
   promise: ({store: {dispatch, getState}}) => {
@@ -39,6 +40,11 @@ export default class App extends Component {
     store: PropTypes.object.isRequired
   };
 
+  componentDidMount () {
+    console.log('app refs: ', this.refs, this.refs.layout);
+    closeDrawer.setLayout(this.refs.layout);
+  }
+
   componentWillReceiveProps (nextProps) {
     if (!this.props.user && nextProps.user) {
       // login
@@ -49,11 +55,6 @@ export default class App extends Component {
     }
   }
 
-  handleLogout = (event) => {
-    event.preventDefault();
-    this.props.logout();
-  };
-
   render () {
     const styles = require('./App.scss');
     const {user} = this.props;
@@ -61,9 +62,9 @@ export default class App extends Component {
     return (
       <div className={styles.app}>
         <Helmet {...config.app.head}/>
-        <Layout fixedHeader>
-          <Navigation drawer={0} pushState={this.props.pushState} navstyles={styles} user={user}/>
-          <Navigation drawer={1} pushState={this.props.pushState} navstyles={styles} user={user}/>
+        <Layout fixedHeader ref="layout">
+          <Navigation logout={this.props.logout} drawer={0} pushState={this.props.pushState} navstyles={styles} user={user}/>
+          <Navigation logout={this.props.logout} drawer={1} pushState={this.props.pushState} navstyles={styles} user={user}/>
           <div className={styles.appContent}>
             {this.props.children}
           </div>

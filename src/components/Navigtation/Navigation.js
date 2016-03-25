@@ -39,6 +39,11 @@ export default class TopNavigation extends Component {
     this.props.logout();
   };
 
+  toLogin () {
+    this.props.pushState('/login');
+    if (this.props.drawer) closeDrawer.close();
+  }
+
   render () {
     const navstyles = this.props.navstyles;
     const localstyles = require('./Navigation.scss');
@@ -72,7 +77,6 @@ export default class TopNavigation extends Component {
       children.unshift(<div key="chat-button" className={buttonClass}><Button to="/chat">
         Chat
       </Button></div>);
-
       children.push(
         <div key="logout-button"><Button to="/logout">
           <div className="logout-link" onClick={this.handleLogout.bind(this)}>
@@ -92,9 +96,11 @@ export default class TopNavigation extends Component {
           </Button></div>);
     } else {
       children.push(
-        <div key="login-button" className={buttonClass}><Button to="/login">
-          Login
-        </Button></div>);
+        <div key="login-button" className={buttonClass}>
+          <Button onClick={this.toLogin.bind(this)}>
+            Log In
+          </Button>
+        </div>);
     }
 
     return this.props.drawer ? (

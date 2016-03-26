@@ -1,0 +1,6 @@
+systemLog:
+  destination: file
+  path: './mongo.log'
+storage:
+  dbPath: './data'
+  directoryPerDB: 'true'

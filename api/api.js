@@ -1,5 +1,4 @@
 import express from 'express';
-import session from 'express-session';
 import bodyParser from 'body-parser';
 import config from '../src/config';
 import * as actions from './actions/index';
@@ -15,13 +14,26 @@ const server = new http.Server(app);
 
 const io = new SocketIo(server);
 io.path('/ws');
-
+/*
 app.use(session({
   secret: 'react and redux rule!!!!',
   resave: false,
   saveUninitialized: false,
   cookie: { maxAge: 60000 }
+})); */
+
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+
+app.use(session({
+  secret: config.sessionKey,
+  store: new MongoStore({
+    url: 'mongodb://localhost/eyfApp'
+  })
 }));
+
+
+
 app.use(bodyParser.json());
 
 

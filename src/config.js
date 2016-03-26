@@ -14,6 +14,7 @@ module.exports = Object.assign({
   port: process.env.PORT,
   apiHost: process.env.APIHOST || 'localhost',
   apiPort: process.env.APIPORT,
+  sessionKey: process.env.SESSIONKEY || 'flaming hot dog',
   app: {
     title: 'RR + MDL Example',
     description: 'combining react redux universal hot example with Material Design Lite.',

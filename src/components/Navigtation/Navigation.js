@@ -14,24 +14,12 @@ export default class TopNavigation extends Component {
     logout: PropTypes.func.isRequired,
     drawer: PropTypes.number
   };
+  static contextTypes = {
+    router: React.PropTypes.object
+  }
 
   componentDidMount () {
     console.log('this.refs: ', this.refs);
-  }
-
-  toWidgets () {
-    this.props.pushState('/widgets');
-    if (this.props.drawer) closeDrawer.close();
-  }
-
-  toSurvey () {
-    this.props.pushState('/survey');
-    if (this.props.drawer) closeDrawer.close();
-  }
-
-  toAbout () {
-    this.props.pushState('/about');
-    if (this.props.drawer) closeDrawer.close();
   }
 
   handleLogout = (event) => {
@@ -41,7 +29,9 @@ export default class TopNavigation extends Component {
 
   toLogin () {
     this.props.pushState('/login');
-    if (this.props.drawer) closeDrawer.close();
+    if (this.props.drawer) {
+      closeDrawer.close();
+    }
   }
 
   render () {
@@ -56,27 +46,31 @@ export default class TopNavigation extends Component {
         <span className={styles['brand-link__brand-text']}>{config.app.title}</span>
       </IndexLink>
     );
+
+    const go = (link) => () => {
+      this.props.pushState(link);
+      if (this.props.drawer) {
+        closeDrawer.close();
+      }
+    };
+
+    const makeLink = (link, text) => (
+      <div key={`${link}-button`} className={buttonClass}>
+        <Button raised={this.context.router.isActive(link)} onClick={go(link)}>
+          {text}
+        </Button>
+      </div>);
+
     const children = [
-      <div key="widgets-button" className={buttonClass}>
-        <Button onClick={this.toWidgets.bind(this)}>
-        Widgets
-      </Button>
-      </div>,
-      <div key="survey-button" className={buttonClass}>
-        <Button onClick={this.toSurvey.bind(this)}>
-          Survey
-        </Button>
-      </div>,
-      <div key="about-button" href="/about" className={buttonClass}>
-        <Button onClick={this.toAbout.bind(this)}>
-          About Us
-        </Button>
-      </div>];
+      makeLink('/widgets', 'Widgets'),
+      makeLink('/survey', 'Survey'),
+      makeLink('/about', 'About Us')
+    ];
 
     if (user) {
-      children.unshift(<div key="chat-button" className={buttonClass}><Button to="/chat">
-        Chat
-      </Button></div>);
+      children.unshift(
+        makeLink('/chat', 'Chat')
+      );
       children.push(
         <div key="logout-button"><Button to="/logout">
           <div className="logout-link" onClick={this.handleLogout.bind(this)}>
@@ -85,7 +79,7 @@ export default class TopNavigation extends Component {
         </Button></div>);
 
       children.push(
-        <div key="userid" className={buttonClass}>Logged in as
+        <div key="userid" className={buttonClass}>Logged in as&nbsp;
           <strong>{user.name}</strong>.</div>);
 
       children.push(
@@ -96,11 +90,8 @@ export default class TopNavigation extends Component {
           </Button></div>);
     } else {
       children.push(
-        <div key="login-button" className={buttonClass}>
-          <Button onClick={this.toLogin.bind(this)}>
-            Log In
-          </Button>
-        </div>);
+        makeLink('/login', 'Log In')
+      );
     }
 
     return this.props.drawer ? (
@@ -113,7 +104,7 @@ export default class TopNavigation extends Component {
     ) : (
       <Header title={title}>
         <Navigation>
-               {children}
+          {children}
         </Navigation>
       </Header>
     );

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="80px" height="94px" viewBox="0 0 80 94" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.6.1 (26313) - http://www.bohemiancoding.com/sketch -->
+    <title>logoBlack</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icons" transform="translate(-1186.000000, -1153.000000)" fill="#89000F">
+            <g id="logo-red" transform="translate(1186.000000, 1148.000000)">
+                <g id="Page-1">
+                    <g>
+                        <g id="logo-red">
+                            <g id="shared-wing" transform="translate(47.295241, 73.541753) rotate(33.000000) translate(-47.295241, -73.541753) translate(9.795241, 61.041753)">
+                                <rect id="Rectangle-8" x="4.26325641e-14" y="11.6071429" width="60.8469945" height="4.17857143"></rect>
+                                <g id="Oval-8" transform="translate(54.808743, 4.178571)">
+                                    <ellipse id="Oval" cx="9.52185792" cy="9.51785714" rx="9.52185792" ry="9.51785714"></ellipse>
+                                </g>
+                                <path d="M17.071906,0.350447255 L22.877917,11.9575901 L11.2658951,11.9575901 L17.071906,0.350447255 Z" id="Triangle-1"></path>
+                                <path d="M29.6128896,0.350447255 L35.4189006,11.9575901 L23.8068787,11.9575901 L29.6128896,0.350447255 Z" id="Triangle-1-Copy"></path>
+                                <path d="M42.1538733,0.350447255 L47.9598842,11.9575901 L36.3478623,11.9575901 L42.1538733,0.350447255 Z" id="Triangle-1-Copy-2"></path>
+                            </g>
+                            <g id="shared-wing-copy" transform="translate(49.149958, 31.133825) rotate(-33.000000) translate(-49.149958, -31.133825) translate(11.649958, 19.133825)">
+                                <rect id="Rectangle-8" x="0.0610834225" y="7.60767597" width="60.8469945" height="4.17857143"></rect>
+                                <g id="Oval-8" transform="translate(54.869826, 0.179104)">
+                                    <ellipse id="Oval" cx="9.52185792" cy="9.51785714" rx="9.52185792" ry="9.51785714"></ellipse>
+                                </g>
+                                <g id="Triangle-1-+-Triangle-1-Copy-+-Triangle-1-Copy-2" transform="translate(28.254734, 17.017775) rotate(-180.000000) translate(-28.254734, -17.017775) translate(9.754734, 11.017775)">
+                                    <path d="M6.071906,0.350447255 L11.877917,11.9575901 L0.2658951,11.9575901 L6.071906,0.350447255 Z" id="Triangle-1"></path>
+                                    <path d="M18.6128896,0.350447255 L24.4189006,11.9575901 L12.8068787,11.9575901 L18.6128896,0.350447255 Z" id="Triangle-1-Copy"></path>
+                                    <path d="M31.1538733,0.350447255 L36.9598842,11.9575901 L25.3478623,11.9575901 L31.1538733,0.350447255 Z" id="Triangle-1-Copy-2"></path>
+                                </g>
+                            </g>
+                            <g id="shared-oval" transform="translate(0.000000, 41.250000)">
+                                <g id="Oval-8">
+                                    <ellipse id="Oval" cx="9.52185792" cy="9.51785714" rx="9.52185792" ry="9.51785714"></ellipse>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="139px" height="139px" viewBox="0 0 139 139" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.6.1 (26313) - http://www.bohemiancoding.com/sketch -->
+    <title>signOut</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icons" transform="translate(-616.000000, -955.000000)">
+            <path d="M685.5,1094 C723.88379,1094 755,1062.88379 755,1024.5 C755,986.11621 723.88379,955 685.5,955 C647.11621,955 616,986.11621 616,1024.5 C616,1062.88379 647.11621,1094 685.5,1094 L685.5,1094 Z" id="Oval-14-Copy-2-Copy" fill="#89000F"></path>
+            <g id="logo-white-copy-2" transform="translate(634.000000, 967.529572)" fill="#FFFFFF">
+                <g id="logo-white">
+                    <g id="Page-1">
+                        <g id="logo_white">
+                            <rect id="Rectangle-8" transform="translate(40.708765, 71.691023) rotate(33.000000) translate(-40.708765, -71.691023) " x="10.285268" y="69.6017371" width="60.8469945" height="4.17857143"></rect>
+                            <ellipse id="Oval-8" transform="translate(69.485387, 89.975524) rotate(33.000000) translate(-69.485387, -89.975524) " cx="69.4853873" cy="89.9755242" rx="9.52185792" ry="9.51785714"></ellipse>
+                            <path d="M33.6190695,52.2900566 L39.4250805,63.8971995 L27.8130586,63.8971995 L33.6190695,52.2900566 Z" id="Triangle-1" transform="translate(33.619070, 58.093628) rotate(33.000000) translate(-33.619070, -58.093628) "></path>
+                            <path d="M44.1368233,59.1203656 L49.9428342,70.7275085 L38.3308123,70.7275085 L44.1368233,59.1203656 Z" id="Triangle-1-Copy" transform="translate(44.136823, 64.923937) rotate(33.000000) translate(-44.136823, -64.923937) "></path>
+                            <path d="M54.654577,65.9506747 L60.4605879,77.5578176 L48.8485661,77.5578176 L54.654577,65.9506747 Z" id="Triangle-1-Copy-2" transform="translate(54.654577, 71.754246) rotate(33.000000) translate(-54.654577, -71.754246) "></path>
+                            <rect id="Rectangle-8" transform="translate(40.708765, 32.016387) rotate(-33.000000) translate(-40.708765, -32.016387) " x="10.2852679" y="29.9271012" width="60.8469945" height="4.17857143"></rect>
+                            <ellipse id="Oval-8" transform="translate(69.145655, 13.549255) rotate(-33.000000) translate(-69.145655, -13.549255) " cx="69.1456553" cy="13.5492551" rx="9.52185792" ry="9.51785714"></ellipse>
+                            <g id="Triangle-1-+-Triangle-1-Copy-+-Triangle-1-Copy-2" transform="translate(44.000000, 38.500000) rotate(-180.000000) translate(-44.000000, -38.500000) translate(25.000000, 23.000000)">
+                                <path d="M8.61906933,16.8102104 L14.4250803,28.4173532 L2.81305843,28.4173532 L8.61906933,16.8102104 Z" id="Triangle-1" transform="translate(8.619069, 22.613782) rotate(-33.000000) translate(-8.619069, -22.613782) "></path>
+                                <path d="M19.1368234,9.97990163 L24.9428343,21.5870444 L13.3308124,21.5870444 L19.1368234,9.97990163 Z" id="Triangle-1-Copy" transform="translate(19.136823, 15.783473) rotate(-33.000000) translate(-19.136823, -15.783473) "></path>
+                                <path d="M29.6545773,3.14959287 L35.4605882,14.7567358 L23.8485664,14.7567358 L29.6545773,3.14959287 Z" id="Triangle-1-Copy-2" transform="translate(29.654577, 8.953164) rotate(-33.000000) translate(-29.654577, -8.953164) "></path>
+                            </g>
+                            <ellipse id="Oval-8" cx="9.52185792" cy="51.7678571" rx="9.52185792" ry="9.51785714"></ellipse>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <rect id="Rectangle-18-Copy" fill="#FFFFFF" transform="translate(686.737653, 1024.500000) rotate(-137.000000) translate(-686.737653, -1024.500000) " x="681.737653" y="954" width="10" height="141"></rect>
+        </g>
+    </g>
+</svg>

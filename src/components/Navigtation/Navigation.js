@@ -35,15 +35,13 @@ export default class TopNavigation extends Component {
     }
 
     render() {
-        const navstyles = this.props.navstyles;
-        const localstyles = require('./Navigation.scss');
-        const styles = Object.assign({}, navstyles, localstyles);
+        const styles = require('./Navigation.scss');
         const user = this.props.user;
         const buttonClass = this.props.drawer ? '' : 'mdl-layout--large-screen-only';
         const title = (
-          <IndexLink to="/" className={styles['brand-link']} activeStyle={{color: '#33e0ff'}}>
-              <div className={styles['brand-link__brand']}/>
-              <span className={styles['brand-link__brand-text']}>{config.app.title}</span>
+          <IndexLink to="/" className="brand-link" activeStyle={{color: '#33e0ff'}}>
+              <div className="brand-link__brand"/>
+              <span className="brand-link__brand-text">{config.app.title}</span>
           </IndexLink>
         );
 
@@ -55,13 +53,18 @@ export default class TopNavigation extends Component {
         };
 
         const makeLinkButton = (link, text, comms) => {
-            const raised = this.context.router.isActive(link);
+            const active = this.context.router.isActive(link);
+            let raised = false;
+            let accent = false;
             const linkStyle = {};
-            if ((!this.props.drawer) && raised) {
+            if ((!this.props.drawer)) {
                 linkStyle.color = 'white';
+                raised = active;
+            } else {
+                accent = active;
             }
             return ( <div key={`${link.replace(/^\\/, '')}-button`} className={buttonClass} {...comms}>
-                <Button raised={raised} style={linkStyle} onClick={go(link)}>
+                <Button accent={accent} raised={raised} style={linkStyle} onClick={go(link)}>
                     {text}
                 </Button>
             </div>);
@@ -86,7 +89,6 @@ export default class TopNavigation extends Component {
                   <strong>{user.name}</strong>.</div>);
             children.push(
               makeLinkButton('/logout', 'Log Out', {onClick: this.handleLogout.bind(this)} ));
-
         } else {
             children.push(
               makeLink('/login', 'Log In')
@@ -94,15 +96,14 @@ export default class TopNavigation extends Component {
         }
 
         return this.props.drawer ? (
-          <Drawer>
+          <Drawer title={title} className={styles.drawer}>
               <Navigation>
                   {children}
-                  <p>I am drawer</p>
               </Navigation>
           </Drawer>
         ) : (
-          <Header title={title}>
-              <Navigation className={styles.navigation}>
+          <Header title={title} className={styles.navigation}>
+              <Navigation>
                   {children}
               </Navigation>
           </Header>

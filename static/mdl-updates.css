@@ -1,0 +1,17 @@
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
+    padding: 0;
+}
+
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link button {
+    width: 100%;
+    text-align: left;
+}
+
+.mdl-layout__drawer > .mdl-layout__title, .mdl-layout__drawer > .mdl-layout-title a {
+    color: black;
+}
+
+.mdl-layout__drawer > .mdl-layout__title, .mdl-layout__drawer > .mdl-layout-title {
+    padding-left: 1rem;
+    line-height: 1.4;
+}

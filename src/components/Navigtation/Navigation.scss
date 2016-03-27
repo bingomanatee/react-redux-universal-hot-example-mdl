@@ -1,4 +1,11 @@
-.mdl-button.mdl-navigation__link {
-	height: auto;
-	z-indx: 0;
+.navigation {
+  z-index: 0;
+  .mdl-navigation__link {
+    height: auto;
+    .mdl-button {
+      .mdl-button--raised {
+        color: white;
+      }
+    }
+  }
 }

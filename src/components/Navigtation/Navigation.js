@@ -39,10 +39,10 @@ export default class TopNavigation extends Component {
         const user = this.props.user;
         const buttonClass = this.props.drawer ? '' : 'mdl-layout--large-screen-only';
         const title = (
-          <IndexLink to="/" className="brand-link" activeStyle={{color: '#33e0ff'}}>
-              <div className="brand-link__brand"/>
-              <span className="brand-link__brand-text">{config.app.title}</span>
-          </IndexLink>
+            <IndexLink to="/" className="brand-link" activeStyle={{color: '#33e0ff'}}>
+                <div className="brand-link__brand"/>
+                <span className="brand-link__brand-text">{config.app.title}</span>
+            </IndexLink>
         );
 
         const go = (link) => () => {
@@ -57,11 +57,13 @@ export default class TopNavigation extends Component {
             let raised = false;
             let accent = false;
             const linkStyle = {};
-            if ((!this.props.drawer)) {
-                linkStyle.color = 'white';
-                raised = active;
-            } else {
+            if (this.props.drawer) {
                 accent = active;
+            } else {
+                if (active) {
+                    linkStyle.color = 'white';
+                }
+                raised = active;
             }
             return ( <div key={`${link.replace(/^\\/, '')}-button`} className={buttonClass} {...comms}>
                 <Button accent={accent} raised={raised} style={linkStyle} onClick={go(link)}>
@@ -82,31 +84,31 @@ export default class TopNavigation extends Component {
 
         if (user) {
             children.unshift(
-              makeLink('/chat', 'Chat')
+                makeLink('/chat', 'Chat')
             );
             children.push(
-              <div key="userid" className={buttonClass}>Logged in as&nbsp;
-                  <strong>{user.name}</strong>.</div>);
+                <div key="userid" className={buttonClass}>Logged in as&nbsp;
+                    <strong>{user.name}</strong>.</div>);
             children.push(
-              makeLinkButton('/logout', 'Log Out', {onClick: this.handleLogout.bind(this)} ));
+                makeLinkButton('/logout', 'Log Out', {onClick: this.handleLogout.bind(this)}));
         } else {
             children.push(
-              makeLink('/login', 'Log In')
+                makeLink('/login', 'Log In')
             );
         }
 
         return this.props.drawer ? (
-          <Drawer title={title} className={styles.drawer}>
-              <Navigation>
-                  {children}
-              </Navigation>
-          </Drawer>
+            <Drawer title={title} className={styles.drawer}>
+                <Navigation>
+                    {children}
+                </Navigation>
+            </Drawer>
         ) : (
-          <Header title={title} className={styles.navigation}>
-              <Navigation>
-                  {children}
-              </Navigation>
-          </Header>
+            <Header title={title} className={styles.navigation}>
+                <Navigation>
+                    {children}
+                </Navigation>
+            </Header>
         );
     }
 }

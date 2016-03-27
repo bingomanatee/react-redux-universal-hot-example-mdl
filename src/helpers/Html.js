@@ -36,8 +36,7 @@ export default class Html extends Component {
           <link rel="shortcut icon" href="/favicon.ico" />
           <script src="/mdl/material.js"></script>
           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-            <link rel="stylesheet" type="text/css" href="mdl/css/material.blue_grey-deep_orange.min.css" />
-            <link rel="stylesheet" type="text/css" href="mdl-updates.css" />
+            <link rel="stylesheet" type="text/css" href="/mdl/mdl-merged.css" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           {/* styles (will be present only in production with webpack extract text plugin) */}
           {Object.keys(assets.styles).map((style, key) =>

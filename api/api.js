@@ -27,16 +27,15 @@ app.use(session({
 }));
 
 console.log('_______ config: ', config);
-const twitterCallbackUrl = `${config.host}:${config.port}/login/twitter/return`;
+const twitterCallbackUrl = `${config.apiHost}:${config.apiPort}/login/twitter/auth`;
 console.log('return api: ', twitterCallbackUrl);
 
 var twitterConfig = require('./../keys/twitter.json');
-var keys = Object.assign({
-    callbackUrl: twitterCallbackUrl
-}, {
+var keys = {
+    callbackURL: twitterCallbackUrl,
     consumerKey: twitterConfig.consumer_key,
     consumerSecret: twitterConfig.consumer_secret
-});
+};
 
 passport.use(new TwitterStrategy(keys,
     function (token, tokenSecret, profile, cb) {
@@ -44,13 +43,19 @@ passport.use(new TwitterStrategy(keys,
         cb(null, profile);
     }
 ));
-passport.serializeUser(function(user, cb) {
+passport.serializeUser(function (user, cb) {
     cb(null, user);
 });
 
-passport.deserializeUser(function(obj, cb) {
+passport.deserializeUser(function (obj, cb) {
     cb(null, obj);
 });
+
+app.get('/login/twitter/auth',
+    passport.authenticate('twitter', {
+        failureRedirect: `/login`,
+        successRedirect: '/api/login'
+    }));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -58,11 +63,6 @@ app.use(passport.session());
 app.get('/login/twitter',
     passport.authenticate('twitter'));
 
-app.get('/login/twitter/auth',
-    passport.authenticate('twitter', {failureRedirect: `$(config.host}:${config.port}/login`}),
-    function (req, res) {
-        res.redirect(`$(config.host}:${config.port}/`);
-    });
 /* passport.authenticate('twitter', {failureRedirect: `$(config.host}:${config.port}/login`}),
  function (req, res) {
  res.redirect(`$(config.host}:${config.port}/`);

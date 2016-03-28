@@ -17,17 +17,8 @@ const app = express();
 const server = new http.Server(app);
 const io = new SocketIo(server);
 io.path('/ws');
-
-app.use(bodyParser.json());
-app.use(session({
-    secret: config.sessionKey,
-    store: new MongoStore({
-        url: 'mongodb://localhost/eyfApp'
-    })
-}));
-
 console.log('_______ config: ', config);
-const twitterCallbackUrl = `${config.apiHost}:${config.apiPort}/login/twitter/auth`;
+const twitterCallbackUrl = `http://${config.apiHost}:${config.apiPort}/login/twitter/auth`;
 console.log('return api: ', twitterCallbackUrl);
 
 var twitterConfig = require('./../keys/twitter.json');
@@ -37,6 +28,13 @@ var keys = {
     consumerSecret: twitterConfig.consumer_secret
 };
 
+app.use(bodyParser.json());
+app.use(session({
+    secret: config.sessionKey,
+    store: new MongoStore({
+        url: 'mongodb://localhost/eyfApp'
+    })
+}));
 passport.use(new TwitterStrategy(keys,
     function (token, tokenSecret, profile, cb) {
         console.log('profile: ', profile);
@@ -50,15 +48,15 @@ passport.serializeUser(function (user, cb) {
 passport.deserializeUser(function (obj, cb) {
     cb(null, obj);
 });
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 app.get('/login/twitter/auth',
     passport.authenticate('twitter', {
         failureRedirect: `/login`,
-        successRedirect: '/api/login'
+        successRedirect: '/'
     }));
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.get('/login/twitter',
     passport.authenticate('twitter'));

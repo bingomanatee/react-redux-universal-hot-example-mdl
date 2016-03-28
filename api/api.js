@@ -27,7 +27,7 @@ var keys = {
     consumerKey: twitterConfig.consumer_key,
     consumerSecret: twitterConfig.consumer_secret
 };
-
+app.use(require('cookie-parser')());
 app.use(bodyParser.json());
 app.use(session({
     secret: config.sessionKey,
@@ -35,6 +35,7 @@ app.use(session({
         url: 'mongodb://localhost/eyfApp'
     })
 }));
+
 passport.use(new TwitterStrategy(keys,
     function (token, tokenSecret, profile, cb) {
         console.log('profile: ', profile);
@@ -55,7 +56,7 @@ app.use(passport.session());
 app.get('/login/twitter/auth',
     passport.authenticate('twitter', {
         failureRedirect: `/login`,
-        successRedirect: '/'
+        successRedirect: `http://${config.host}:${config.port}/`
     }));
 
 app.get('/login/twitter',

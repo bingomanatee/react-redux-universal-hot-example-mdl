@@ -10,10 +10,10 @@ const environment = {
 }[process.env.NODE_ENV || 'development'];
 
 module.exports = Object.assign({
-  host: process.env.HOST || 'localhost',
-  port: process.env.PORT,
-  apiHost: process.env.APIHOST || 'localhost',
-  apiPort: process.env.APIPORT,
+  host: process.env.HOST || 'eatyourfriends.club',
+  port: process.env.PORT || '',
+  apiHost: process.env.APIHOST || 'eatyourfriends.club',
+  apiPort: process.env.APIPORT || '',
   sessionKey: process.env.SESSIONKEY || 'flaming hot dog',
   app: {
     title: 'RR + MDL Example',

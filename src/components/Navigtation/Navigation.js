@@ -49,6 +49,8 @@ export default class TopNavigation extends Component {
             this.props.pushState(link);
             if (this.props.drawer) {
                 closeDrawer.close();
+            } else {
+                console.log('close not drawer');
             }
         };
 
@@ -65,8 +67,8 @@ export default class TopNavigation extends Component {
                 }
                 raised = active;
             }
-            return ( <div key={`${link.replace(/^\\/, '')}-button`} className={buttonClass} {...comms}>
-                <Button accent={accent} raised={raised} style={linkStyle} onClick={go(link)}>
+            return ( <div key={`${link.replace(/^\\/, '')}-button`} className={buttonClass} >
+                <Button accent={accent} raised={raised} style={linkStyle} {...comms}>
                     {text}
                 </Button>
             </div>);
@@ -87,8 +89,8 @@ export default class TopNavigation extends Component {
                 makeLink('/chat', 'Chat')
             );
             children.push(
-                <div key="userid" className={buttonClass}>Logged in as&nbsp;
-                    <strong>{user.name}</strong>.</div>);
+                <div key="userid" className={buttonClass}>
+                    <div className="nav-text">Logged in as&nbsp;{user.displayName}.</div></div>);
             children.push(
                 makeLinkButton('/logout', 'Log Out', {onClick: this.handleLogout.bind(this)}));
         } else {

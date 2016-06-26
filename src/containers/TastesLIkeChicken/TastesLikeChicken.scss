@@ -1,0 +1,146 @@
+.tlcSearch {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --------- User List ------------ */
+
+$iconWidth: 50px;
+$chooseWidth: 175px;
+$ulibLeft: 2rem;
+
+.userListItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 60rem;
+  width: 100%;
+  &:hover .userListItemChoose__iconInnerOver{
+	display: block;
+  }
+  &:hover .userListItemChoose__iconInner {
+	display: none;
+  }
+  .userListItemChoose__iconInnerOver {
+	display: none;
+  }
+}
+
+.userListItem__icon {
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  padding: 4px;
+  border: 1px solid rgb(255, 225, 225);
+  img {
+	width: 40px;
+	height: 40px;
+  }
+}
+
+.userListItem__choose {
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  padding: 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+.userListItemChoose__icon {
+  width: 34px;
+  height: 49px;
+}
+
+.userListItemChoose__iconInner, .userListItemChoose__iconInnerOver {
+  background-repeat: no-repeat;
+  width: 34px;
+  height: 49px;
+}
+
+.userListItem__body {
+  flex-grow: 10;
+  h3 {
+	margin: 0;
+	padding: 0;
+	padding-left: $ulibLeft;
+	font-size: 1.25rem;
+	line-height: 1.33;
+	font-width: bold;
+  }
+  p {
+	margin: 0;
+	padding: 0;
+	padding-left: $ulibLeft;
+	color: rgba(0, 0, 0, 0.66);
+	line-height: 1.33;
+  }
+}
+
+.userListItemChooseButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* -------------- Search List -------------- */
+
+.tlcSearchPrompt {
+  flex-grow: 1;
+  text-align: right;
+  padding-right: 3rem;
+}
+
+.prompt {
+  font-weight: bold;
+}
+
+.tlcSearchField {
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.tlcSearchFieldField {
+  flex-grow: 1;
+}
+
+.tlcSearchFieldIcon {
+  padding-left: 2rem;
+  flex-grow: 0;
+}
+
+.userLabel {
+  height: 38px;
+  display: flex;
+  flex-direction: row;
+}
+
+.userLabelInner {
+  padding-left: 2rem;
+  padding-top: .6rem;
+  padding-bottom: .6rem;
+}
+
+.rightIcon {
+  width: 34px;
+  height: 49px;
+  padding: 0;
+  flex-basis: 34px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  img {
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 30px;
+	width: 34px;
+	height: 49px;
+  }
+}

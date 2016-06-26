@@ -7,7 +7,9 @@ import PrettyError from 'pretty-error';
 import http from 'http';
 import SocketIo from 'socket.io';
 import passport from'passport';
+import mongoKey from '../keys/mongo.json';
 const TwitterStrategy = require('passport-twitter').Strategy;
+const userModel = require('./models/userModel');
 
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
@@ -21,28 +23,35 @@ console.log('_______ config: ', config);
 const twitterCallbackUrl = `http://${config.apiHost}:${config.apiPort}/login/twitter/auth`;
 console.log('return api: ', twitterCallbackUrl);
 
+app.use(require('cookie-parser')());
+app.use(bodyParser.json());
+app.use(session({
+    secret: config.sessionKey,
+    store: new MongoStore(mongoKey)
+}));
+
+/**
+ * TWITTER login 
+ */
+
 var twitterConfig = require('./../keys/twitter.json');
 var keys = {
     callbackURL: twitterCallbackUrl,
     consumerKey: twitterConfig.consumer_key,
     consumerSecret: twitterConfig.consumer_secret
 };
-app.use(require('cookie-parser')());
-app.use(bodyParser.json());
-app.use(session({
-    secret: config.sessionKey,
-    store: new MongoStore({
-        url: 'mongodb://localhost/eyfApp'
-    })
-}));
-
 passport.use(new TwitterStrategy(keys,
     function (token, tokenSecret, profile, cb) {
+        profile.twAuth = {
+            tokenSecret,
+            token
+        };
         console.log('profile: ', profile);
         cb(null, profile);
     }
 ));
 passport.serializeUser(function (user, cb) {
+    console.log('profile to serialize: ', user);
     cb(null, user);
 });
 
@@ -52,7 +61,6 @@ passport.deserializeUser(function (obj, cb) {
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 app.get('/login/twitter/auth',
     passport.authenticate('twitter', {
         failureRedirect: `/login`,
@@ -61,11 +69,6 @@ app.get('/login/twitter/auth',
 
 app.get('/login/twitter',
     passport.authenticate('twitter'));
-
-/* passport.authenticate('twitter', {failureRedirect: `$(config.host}:${config.port}/login`}),
- function (req, res) {
- res.redirect(`$(config.host}:${config.port}/`);
- }); */
 
 app.use((req, res) => {
     const splittedUrlPath = req.url.split('?')[0].split('/').slice(1);

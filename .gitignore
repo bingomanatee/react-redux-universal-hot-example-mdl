@@ -5,5 +5,8 @@ dist/
 webpack-assets.json
 webpack-stats.json
 npm-debug.log
+*.log
 *.log.*
 keys/*.json
+.DS_Store
+mongo/data/

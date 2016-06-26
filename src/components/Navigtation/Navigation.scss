@@ -2,64 +2,71 @@
 
 .navigation {
   .mdl-navigation__link {
-    height: auto;
-    .mdl-button {
-      .mdl-button--raised {
-        color: white;
-      }
-    }
+	height: auto;
+	.mdl-button {
+	  .mdl-button--raised {
+		color: white;
+	  }
+	}
   }
+  :global(.mdl-layout__header-row) {
+	max-width: $large-size;
+  }
+
   :global(a.brand-link) {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
 
-    :global(.brand-link__brand) {
-      //position: absolute;
-      $size: 40px;
-      //top: 5px;
-      //left: 5px;
-      display: inline-block;
-      background: #2d2d2d url('../../containers/Home/logo.png') no-repeat center center;
-      width: $size;
-      height: $size;
-      background-size: 80%;
-      margin: 0 10px 0 0;
-      border-radius: $size / 2;
-    }
+	:global(.brand-link__brand) {
+	  //position: absolute;
+	  $size: 40px;
+	  //top: 5px;
+	  //left: 5px;
+	  display: inline-block;
+	  background: #2d2d2d url('./logoWhite.svg') no-repeat center center;
+	  width: $size;
+	  height: $size;
+	  background-size: 80%;
+	  margin: 0 10px 0 0;
+	  border-radius: $size / 2;
+	}
 
-    :global(.brand-link__brand-text) {
-      padding-top: 0.5rem;
-      color: $brand-link;
-      text-decoration: none;
-    }
+	:global(.brand-link__brand-text) {
+	  padding-top: 0.5rem;
+	  color: $brand-link;
+	  text-decoration: none;
+	}
   }
 
 }
 
 .drawer {
+  :global(.nav-text) {
+	margin-left: 16px;
+  }
   :global(a.brand-link) {
-    margin-top: 1.5rem;
-    display: flex;
-    text-decoration: none;
-    flex-direction:column;
-    :global(.brand-link__brand) {
-      //position: absolute;
-      $size: 40px;
-      //top: 5px;
-      //left: 5px;
-      display: inline-block;
-      background: #2d2d2d url('../../containers/Home/logo.png') no-repeat center center;
-      width: $size;
-      height: $size;
-      background-size: 80%;
-      margin: 0 10px 0 0;
-      border-radius: $size / 2;
-    }
-    :global(.brand-link__brand-text) {
-      padding-top: 0.25rem;
-      color: black;
-      font-size: 1rem;
-    }
+	margin-top: 1.5rem;
+	display: flex;
+	text-decoration: none;
+	flex-direction: column;
+	:global(.brand-link__brand) {
+	  //position: absolute;
+	  $size: 40px;
+	  //top: 5px;
+	  //left: 5px;
+	  display: inline-block;
+	  background: #2d2d2d url('./logoWhite.svg') no-repeat center center;
+	  width: $size;
+	  height: $size;
+	  background-size: 80%;
+	  margin: 0 10px 0 0;
+	  border-radius: $size / 2;
+	}
+	:global(.brand-link__brand-text) {
+	  padding-top: 0.25rem;
+	  color: black;
+	  font-size: 1rem;
+	}
   }
 }

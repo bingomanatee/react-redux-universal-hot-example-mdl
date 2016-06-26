@@ -65,7 +65,7 @@ export default class App extends Component {
         <Layout fixedHeader ref="layout">
           <Navigation logout={this.props.logout} drawer={0} pushState={this.props.pushState} navstyles={styles} user={user}/>
           <Navigation logout={this.props.logout} drawer={1} pushState={this.props.pushState} navstyles={styles} user={user}/>
-          <div className={styles.appContent}>
+          <div id="content-root" className={styles.appContent}>
             {this.props.children}
           </div>
           <InfoBar/>

@@ -16,7 +16,7 @@ module.exports = Object.assign({
   apiPort: process.env.APIPORT || '',
   sessionKey: process.env.SESSIONKEY || 'flaming hot dog',
   app: {
-    title: 'RR + MDL Example',
+    title: 'EatYourFriends.club',
     description: 'combining react redux universal hot example with Material Design Lite.',
     head: {
       titleTemplate: 'React Redux + MDEL: %s',

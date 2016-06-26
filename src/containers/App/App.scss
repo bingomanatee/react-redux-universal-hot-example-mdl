@@ -1,3 +1,4 @@
+@import '../../theme/variables';
 
 .app {
 	nav :global(.fa) {
@@ -9,5 +10,8 @@
 }
 
 .appContent {
-	margin: 50px 0; // for fixed navbar
+	:global(.container) {
+		padding-left: $left-margin;
+		max-width: $large-size - $left-margin;
+	}
 }

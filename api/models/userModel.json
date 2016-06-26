@@ -1,0 +1,22 @@
+{
+  "username": {
+    "type": "string",
+    "required": true
+  },
+  "id": "string",
+  "displayName": {
+    "type": "string",
+    "required": true
+  },
+  "provider": {
+    "type": "string",
+    "enum": [
+      "twitter"
+    ]
+  },
+  "twAuth": {
+    "tokenSecret": "string",
+    "token": "string"
+  },
+  "photos": ["string"]
+}
